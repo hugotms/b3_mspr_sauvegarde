@@ -1,0 +1,20 @@
+name: Get HTML
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: docker/build-push-action@v2
+        with:
+          tags: generation:latest
+          push: false
